@@ -8,8 +8,10 @@ import HTMLReport
 #from Xingren.chat import *
 #from demo.test import *
 #from Xingren.login import *
-from Xingren.add_Taoc import *
 #from Xingren.payment import *
+from collect_drugs import *
+from search_drugs import *
+
 
 #测试报告
 if __name__ == '__main__':
@@ -19,7 +21,7 @@ if __name__ == '__main__':
     #         Test("test_case3"), Test("test_login"), Test("test_case4"), Test("test_case5")]
     #tests = [Test("test_case2"), Test("test_case3"), Test("test_case4"), Test("test_case5")]
     #tests = [Test("findElement"), Test("test_register"), Test("create_phone"), Test("test_case1"), Test("test_case2"), Test("test_case3"), Test("test_login"), Test("test_case4"), Test("test_case5")]
-    tests = [Test("test_case1"), Test("test_case2"), Test("test_case3"), Test("test_case4")]
+    tests = [Test("test_case1"), Test("test_case2"), Test("test_case3")]
     #tests = [Test("test_case1"), Test("test_case2")]
     suite.addTests(tests)
 

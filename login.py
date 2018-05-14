@@ -9,7 +9,7 @@ import unittest
 import requests
 import random
 import selenium.common.exceptions
-from Xingren.config import *
+from config import *
 from time import sleep
 from selenium import webdriver
 from appium import webdriver
@@ -20,17 +20,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Test(unittest.TestCase):
-
-	'''//拎到了config里面
-	def findelementbyid(self, element):
-		try:
-			WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.ID,element)))
-			return True
-		except selenium.common.exceptions.TimeoutException:
-			return False
-		except selenium.common.exceptions.NoSuchElementException:
-			return False
-'''
 	def test_register(self):#判断是否有欢迎页，然后注册
 		if self.findelementbyid('com.kanchufang.privatedoctor:id/lrchoose_register_btn'):
 			driver.find_element_by_id("com.kanchufang.privatedoctor:id/lrchoose_register_btn").click()
@@ -40,12 +29,11 @@ class Test(unittest.TestCase):
 			driver.find_element_by_id("com.kanchufang.privatedoctor:id/register_hint_dialog_start_btn").click()
 
 	def create_phone(self):#随机生成手机号
-		str = '0123456789'
+		li = '0123456789'
 		top = '210'
-		self.phone = top + "".join(random.choice(str) for i in range(8))
+		self.phone = top + "".join(random.choice(li) for i in range(8))
 		self.password = 'qqqqqq'
 		self.name = 'test'
-
 
 	def test_case1(self):  # 注册
 		self.create_phone()

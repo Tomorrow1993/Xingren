@@ -7,7 +7,7 @@ Project:使用unnitest框架编写测试用例思路
 '''
 import unittest
 import selenium.common.exceptions
-from Xingren.config import *
+from config import *
 from time import sleep
 from selenium import webdriver
 from appium import webdriver
