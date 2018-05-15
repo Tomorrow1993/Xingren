@@ -21,8 +21,8 @@ if __name__ == '__main__':
     #         Test("test_case3"), Test("test_login"), Test("test_case4"), Test("test_case5")]
     #tests = [Test("test_case2"), Test("test_case3"), Test("test_case4"), Test("test_case5")]
     #tests = [Test("findElement"), Test("test_register"), Test("create_phone"), Test("test_case1"), Test("test_case2"), Test("test_case3"), Test("test_login"), Test("test_case4"), Test("test_case5")]
-    tests = [Test("test_case1"), Test("test_case2"), Test("test_case3")]
-    #tests = [Test("test_case1"), Test("test_case2")]
+    tests = [Test("test_case1"), Test("test_case2"), Test("test_case3"), Test("test_case4"), Test("test_case5")]
+    #tests = [Test("test_case1"), Test("test_case2"), Test("test_case3"), Test("test_case4")]
     suite.addTests(tests)
 
     #runner = unittest.TextTestRunner(verbosity=2)
