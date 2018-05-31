@@ -1,10 +1,7 @@
- # -*- coding: UTF-8 -*-
-#from selenium import webdriver
-'''
-created on 2018-1-15
-@author:Eddie
-Project:使用unnitest框架编写测试用例思路
-'''
+# -*- coding: utf-8 -*-
+# @created on 2018/3/14 下午6:47
+# @author:Eddie
+# Project:使用unnitest框架编写测试用例思路
 import unittest
 import selenium.common.exceptions
 from config import *
@@ -18,54 +15,34 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Test(unittest.TestCase):
-
-	'''//拎到了config里面
-	def findelementbyid(self, element):
-		try:
-			WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.ID, element)))
-			return True
-		except selenium.common.exceptions.TimeoutException:
-			return False
-		except selenium.common.exceptions.NoSuchElementException:
-			return False
-
-	def findelementbyxpath(self, element):
-		try:
-			WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, element)))
-			return True
-		except selenium.common.exceptions.TimeoutException:
-			return False
-		except selenium.common.exceptions.NoSuchElementException:
-			return False
-'''
-	def test_case1(self):#开通收费
-		WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.ID,"com.kanchufang.privatedoctor:id/tab_home_rb")))
+	def test_case1(self):  # 开通收费
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.ID,"com.kanchufang.privatedoctor:id/tab_home_rb")))
 		el1 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/tab_work_site_rb")
 		el1.click()
-		WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='线下工作室']")))
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='线下工作室']")))
 
 		el2 = driver.find_element_by_xpath("//*[@text='杏仁门诊']")
 		el3 = driver.find_element_by_xpath("//*[@text='新的执业地点']")
-		driver.scroll(el3,el2)
+		driver.scroll(el3, el2)
 
 		sleep(3)
 		el4 = driver.find_element_by_xpath("//*[@text='包月咨询']")
 		el4.click()
-		WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='99元/月']")))
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='99元/月']")))
 		el5 = driver.find_element_by_xpath("//*[@text='99元/月']")
 		el5.click()
 		
 		sleep(3)
 		el6 = driver.find_element_by_xpath("//*[@text='图文咨询']")
 		el6.click()
-		WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='19元/次']")))
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='19元/次']")))
 		el7 = driver.find_element_by_xpath("//*[@text='19元/次']")
 		el7.click()
 
 		sleep(3)
 		el8 = driver.find_element_by_xpath("//*[@text='电话咨询']")
 		el8.click()
-		WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='49元/次']")))
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='49元/次']")))
 		el9 = driver.find_element_by_xpath("//*[@text='49元/次']")
 		el9.click()
 
@@ -87,7 +64,7 @@ class Test(unittest.TestCase):
 		#assertIsNotNone(driver.find_element_by_xpath("//*[@text='VIP']"),'消息列表无图文VIP')
 		el10 = driver.find_element_by_xpath("//*[@text='所有患者']")
 		el10.click()
-		WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.ID,"com.kanchufang.privatedoctor:id/tv_sort_by_fee")))
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.ID,"com.kanchufang.privatedoctor:id/tv_sort_by_fee")))
 		if findelementbyxpath("//*[@text='test']"):
 			pass
 		else:
@@ -117,9 +94,9 @@ class Test(unittest.TestCase):
 		else:
 			print('聊天页患者名字下面没有VIP图文')
 		#assertIsNotNone(driver.find_element_by_xpath("//*[@text='VIP图文']"),'聊天页患者名字下面没有VIP图文')
-		driver.swipe(1000,800,100,800)
-		WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='咨询订单']")))
-		self.assertIn('图文咨询',driver.page_source,'服务套餐tab图文状态未更新')
+		driver.swipe(1000, 800, 100, 800)
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH,"//*[@text='咨询订单']")))
+		self.assertIn('图文咨询', driver.page_source,'服务套餐tab图文状态未更新')
 		driver.press_keycode('4')
 
 		#退款图文API
@@ -214,6 +191,3 @@ class Test(unittest.TestCase):
 		else:
 			print('聊天页没有电话弹窗')
 		#assertIsNotNone(driver.find_element_by_id("com.kanchufang.privatedoctor:id/iv_goto_call",'聊天页没有电话弹窗'))
-
-	if __name__ == '__main__':
-		unittest.main()

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-# @created on 2018/4/11 上午11:40
+# @created on 2018/3/14 下午6:47
 # @author:Eddie
-# from selenium import webdriver
 # Project:使用unnitest框架编写测试用例思路
 import sys
 import os

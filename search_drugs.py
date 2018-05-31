@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-# @created on 2018/5/11 下午6:07
+# @created on 2018/3/14 下午6:47
 # @author:Eddie
-# from selenium import webdriver
 # Project:使用unnitest框架编写测试用例思路
 import unittest
 from config import *
+from HTMLReport import logger
 
 
-class Test(unittest.TestCase):
+class SearchDrugs(unittest.TestCase):
 	def test_case1(self):  # 进入西药首页
 		WebDriverWait(driver, 20).until(
 			EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/tab_home_rb")))
@@ -50,8 +50,6 @@ class Test(unittest.TestCase):
 				driver.scroll(el12, el13)
 				el11 = driver.find_element_by_xpath("//*[@text='饭前服药']")
 				el11.click()
-				#el11 = driver.find_element_by_xpath("//*[@text='饭前服药']")
-				#el11.click()
 			else:
 				el12 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_tv_tips")
 				el13 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_route_more")
@@ -60,10 +58,30 @@ class Test(unittest.TestCase):
 				el11.click()
 
 	def test_case4(self):  # 加入推荐单
-		el12 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_btn_add_recommend")
-		el12.click()
+		if findelementbyid("com.kanchufang.privatedoctor:id/yf_btn_update"):
+			el11 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_btn_update")
+			el11.click()
+		else:
+			el12 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_btn_add_recommend")
+			el12.click()
 
 	def test_case5(self):  # 去推荐
+		sleep(2)
 		el13 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_recommend")
 		el13.click()
+
+	def test_case6(self):  # 填写诊断
+		el14 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_tv_diagnosis")
+		el14.click()
+		WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/yf_title")))
+		os.system('adb shell ime set io.appium.android.ime/.UnicodeIME')
+		el15 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_actv_search")
+		el15.send_keys("痤疮")
+		os.system('adb shell ime set com.sohu.inputmethod.sogou/.SogouIME')
+		sleep(2)
+		driver.press_keycode(66)
+		el16 = driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_tv_recommend")
+		el16.click()
+		sleep(2)
+		self.assertIsNotNone(driver.find_element_by_id("com.kanchufang.privatedoctor:id/btn_send"), '药品推荐成功')
 
